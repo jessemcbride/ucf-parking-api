@@ -15,7 +15,7 @@ def garages():
 @app.route('/api/v1/garages/<garage>')
 @app.route('/api/v1/garages/<garage>/')
 def garage(garage):
-    garage = filter(lambda x: x.name.lower() == garage.lower(), scrape())
+    garage = filter(lambda x: x['name'].lower() == garage.lower(), scrape())
     return jsonify(garage)
 
 

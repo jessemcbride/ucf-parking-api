@@ -1,11 +1,9 @@
 import math
 import urllib2
-from collections import namedtuple
 
 from bs4 import BeautifulSoup
 
 url = 'http://secure.parking.ucf.edu/GarageCount/'
-Garage = namedtuple('Garage', 'name available total percentage')
 
 
 def scrape():
@@ -23,12 +21,12 @@ def scrape():
         percentage = math.floor(100 - (float(available) / float(total)) * 100)
 
         garages.append(
-            Garage(
-                name=garage,
-                available=available,
-                total=total,
-                percentage=percentage
-            )
+            {
+                'name': garage,
+                'available': available,
+                'total': total,
+                'percentage': percentage
+            }
         )
 
     return garages
